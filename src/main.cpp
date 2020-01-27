@@ -43,6 +43,5 @@ int main(int argc, const char* argv[]) {
         std::cout << "Latitude: " << res.getLatitude() << std::endl;
         std::cout << "Longitude: " << res.getLongitude() << std::endl;
     }
-    // std::cout << "" << nDistance << std::endl;
     return 0;
 }

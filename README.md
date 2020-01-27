@@ -4,7 +4,18 @@
 
 C++. Call request to another services for get location coordinates by IP-address
 
-Example:
+## Integrate to your c++ project
+include files:
+
+    src.wsjcpp/wsjcpp_core/wsjcpp_core.h
+    src.wsjcpp/wsjcpp_core/wsjcpp_core.cpp
+    src/wsjcpp_geoip.cpp
+    src/wsjcpp_geoip.h
+
+or use a wsjcpp: `wsjcpp install https://github.com/wsjcpp/wsjcpp-geoip:master`
+
+## Example code usage:
+
 ```
 WSJCppGeoIPResult res = WSJCppGeoIP::requestToIpApiCom("1.1.1.1");
 if (res.hasError()) {
