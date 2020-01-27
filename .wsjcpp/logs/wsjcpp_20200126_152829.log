@@ -1,0 +1,7 @@
+2020-01-26 15:28:29.952, 0x7f9bcafed780 [ERR] WSJCppPackageManagerUnitTest: Missing required field 'url' in (./wsjcpp.yml:43):     - name: ParserIpApiCom
+2020-01-26 15:28:29.952, 0x7f9bcafed780 [INFO] ArgumentProcessorReinstall: Try reinstalling 'https://github.com/wsjcpp/wsjcpp-core:master' package...
+2020-01-26 15:28:29.952, 0x7f9bcafed780 [INFO] WSJCppPackageManager: sUrl: 'https://raw.githubusercontent.com/wsjcpp/wsjcpp-core/master//wsjcpp.yml'
+2020-01-26 15:28:29.952, 0x7f9bcafed780 [INFO] WSJCppPackageManager: sPath: './.wsjcpp/cache/https___github_com_wsjcpp_wsjcpp_core_master/wsjcpp.hold.yml'
+2020-01-26 15:28:30.775, 0x7f9bcafed780 [ERR] WSJCppPackageManager: Missing required field 'cases' in './.wsjcpp/cache/https___github_com_wsjcpp_wsjcpp_core_master/wsjcpp.hold.yml' (./.wsjcpp/cache/https___github_com_wsjcpp_wsjcpp_core_master/wsjcpp.hold.yml:32): unit-tests:
+2020-01-26 15:28:30.775, 0x7f9bcafed780 [ERR] WSJCppPackageManager: Could not load ./.wsjcpp/cache/https___github_com_wsjcpp_wsjcpp_core_master
+2020-01-26 15:28:30.775, 0x7f9bcafed780 [ERR] ArgumentProcessorReinstall: Could not reinstall 'https://github.com/wsjcpp/wsjcpp-core:master' package.

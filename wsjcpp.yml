@@ -1,0 +1,48 @@
+wsjcpp_version: v0.0.1
+cmake_minimum_required: 3.0
+cmake_cxx_standard: 11
+name: wsjcpp-geoip
+version: v0.0.1
+description: C++. Call request to another services for get location coordinates by IP-address
+issues: https://github.com/wsjcpp/wsjcpp-geoip/issues
+keywords:
+  - "c++"
+  - "sources"
+  - "storages"
+  - "database"
+
+required-libraries:
+  - pthread
+
+required-pkg-config:
+  - CURL
+
+dependencies:
+  - name: "wsjcpp/wsjcpp-core"
+    version: "v0.0.3"
+    url: "https://github.com/wsjcpp/wsjcpp-core:master"
+    origin: "https://github.com/"
+    installation-dir: "./src.wsjcpp/wsjcpp_wsjcpp_core"
+  - name: "nlohmann/json"
+    version: "v3.7.3"
+    url: "https://github.com/wsjcpp/json:develop"
+    origin: "https://github.com/"
+    installation-dir: "./src.wsjcpp/nlohmann_json"
+
+repositories:
+  - type: main
+    url: "https://github.com/wsjcpp/wsjcpp-geoip"
+
+authors:
+  - name: "Evgenii Sopov"
+    email: "mrseakg@gmail.com"
+
+distribution:
+  - source-file: "src/wsjcpp_geoip.cpp"
+    target-file: "wsjcpp_geoip.cpp"
+    type: "source-code"
+    sha1: "242df088d637aca49912952bb5474a26aa4f352d"
+  - source-file: "src/wsjcpp_geoip.h"
+    target-file: "wsjcpp_geoip.h"
+    type: "source-code"
+    sha1: "739d22dcb6a4c3b8c896568f8a45366d68e8bdbb"
