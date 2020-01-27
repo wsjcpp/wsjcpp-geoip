@@ -1,4 +1,5 @@
 #include <string>
+#include <wsjcpp_core.h>
 #include <unit_tests.h>
 
 int main(int argc, char** argv) {

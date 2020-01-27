@@ -1,6 +1,0 @@
-2020-01-26 15:25:47.076, 0x7f5b38179780 [INFO] ArgumentProcessorReinstall: Try reinstalling 'https://github.com/wsjcpp/wsjcpp-core:master' package...
-2020-01-26 15:25:47.076, 0x7f5b38179780 [INFO] WSJCppPackageManager: sUrl: 'https://raw.githubusercontent.com/wsjcpp/wsjcpp-core/master//wsjcpp.yml'
-2020-01-26 15:25:47.076, 0x7f5b38179780 [INFO] WSJCppPackageManager: sPath: './.wsjcpp/cache/https___github_com_wsjcpp_wsjcpp_core_master/wsjcpp.hold.yml'
-2020-01-26 15:25:48.046, 0x7f5b38179780 [ERR] WSJCppPackageManager: Missing required field 'cases' in './.wsjcpp/cache/https___github_com_wsjcpp_wsjcpp_core_master/wsjcpp.hold.yml' (./.wsjcpp/cache/https___github_com_wsjcpp_wsjcpp_core_master/wsjcpp.hold.yml:32): unit-tests:
-2020-01-26 15:25:48.046, 0x7f5b38179780 [ERR] WSJCppPackageManager: Could not load ./.wsjcpp/cache/https___github_com_wsjcpp_wsjcpp_core_master
-2020-01-26 15:25:48.046, 0x7f5b38179780 [ERR] ArgumentProcessorReinstall: Could not reinstall 'https://github.com/wsjcpp/wsjcpp-core:master' package.

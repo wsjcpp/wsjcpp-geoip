@@ -1,5 +1,6 @@
 wsjcpp-geoip
 tmp/*
+.wsjcpp/*
 
 # Prerequisites
 *.d

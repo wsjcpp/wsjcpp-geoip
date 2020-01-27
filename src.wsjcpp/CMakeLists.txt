@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 add_definitions(-DWSJCPP_VERSION="v0.0.1")
-add_definitions(-DWSJCPP_NAME="wsjcpp-storages")
+add_definitions(-DWSJCPP_NAME="wsjcpp-geoip")
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(MACOSX TRUE)
@@ -14,7 +14,7 @@ set (WSJCPP_LIBRARIES "")
 set (WSJCPP_INCLUDE_DIRS "")
 set (WSJCPP_SOURCES "")
 
-# wsjcpp/wsjcpp-core:v0.0.3
+# wsjcpp/wsjcpp-core:v0.0.4
 list (APPEND WSJCPP_INCLUDE_DIRS "./src.wsjcpp/wsjcpp_wsjcpp_core/")
 list (APPEND WSJCPP_SOURCES "./src.wsjcpp/wsjcpp_wsjcpp_core/wsjcpp_core.cpp")
 list (APPEND WSJCPP_SOURCES "./src.wsjcpp/wsjcpp_wsjcpp_core/wsjcpp_core.h")
