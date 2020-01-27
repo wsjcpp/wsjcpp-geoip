@@ -25,14 +25,24 @@ int main(int argc, const char* argv[]) {
         vArgs.push_back(std::string(argv[i]));
     }
 
-    /*if (vArgs.size() != 3) {
-        std::cout << "Usage: " << vArgs[0] << " <string1> <string2>" << std::endl;
+    if (vArgs.size() != 2) {
+        std::cout << "Usage: " << vArgs[0] << " <ip-adderss>" << std::endl;
         return -1;
     }
 
-    std::string s1 = vArgs[1];
-    std::string s2 = vArgs[2];
-    int nDistance = WSJCppLevenshtein::distance(s1,s2);
-    std::cout << "" << nDistance << std::endl;*/
+    std::string sIpAddress = vArgs[1];
+    WSJCppGeoIPResult res = WSJCppGeoIP::requestToIpApiCom(sIpAddress);
+    if (res.hasError()) {
+        std::cout << "FAILED: " << res.getErrorDescription() << std::endl;
+    } else {
+        std::cout << "Service Name: " << res.getServiceName() << std::endl;
+        std::cout << "IP Address: " << res.getIpAddress() << std::endl;
+        std::cout << "Country: " << res.getCountry() << std::endl;
+        std::cout << "Region Name: " << res.getRegionName() << std::endl;
+        std::cout << "City: " << res.getCity() << std::endl;
+        std::cout << "Latitude: " << res.getLatitude() << std::endl;
+        std::cout << "Longitude: " << res.getLongitude() << std::endl;
+    }
+    // std::cout << "" << nDistance << std::endl;
     return 0;
 }

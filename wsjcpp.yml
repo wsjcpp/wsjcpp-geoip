@@ -18,11 +18,11 @@ required-pkg-config:
   - CURL
 
 dependencies:
-  - name: "wsjcpp/wsjcpp-core"
+  - name: "wsjcpp-core"
     version: "v0.0.4"
     url: "https://github.com/wsjcpp/wsjcpp-core:master"
     origin: "https://github.com/"
-    installation-dir: "./src.wsjcpp/wsjcpp_wsjcpp_core"
+    installation-dir: "./src.wsjcpp/wsjcpp_core"
   - name: "nlohmann/json"
     version: "v3.7.3"
     url: "https://github.com/wsjcpp/json:develop"

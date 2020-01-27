@@ -1,6 +1,7 @@
 #include "wsjcpp_geoip.h"
 #include <json.hpp>
 #include <wsjcpp_core.h>
+#include <curl/curl.h>
 
 // ----------------------------------------------------------------------
 
@@ -136,13 +137,62 @@ nlohmann::json WSJCppGeoIPResult::toJson() {
 
 // ----------------------------------------------------------------------
 
+size_t WSJCppGeoIP_CallbackFunc_DataToString(char *data, size_t size, size_t nmemb, std::string *writerData) {
+  if (writerData == NULL)
+    return 0;
+  writerData->append(data, size*nmemb);
+  return size * nmemb;
+}
+
+// ----------------------------------------------------------------------
+
 WSJCppGeoIPResult WSJCppGeoIP::requestToIpApiCom(const std::string &sIpAddress) {
     std::string sServiceName = "ip-api.com";
-    std::string TAG = "requestToIpApiCom";
-
-    // TODO check is ip address v4 v6 in WSJCppCore
+    
     // TODO check ip reserved range
-    return WSJCppGeoIPResult("ipapi.com", sIpAddress, "Not implemented");
+    std::string TAG = "requestToIpApiCom";
+    if (!WSJCppCore::isIPv4(sIpAddress) && !WSJCppCore::isIPv6(sIpAddress)) {
+        return WSJCppGeoIPResult("ipapi.com", sIpAddress, "Expected ip address");
+    }
+
+    std::string sUrl = "http://ip-api.com/json/" + sIpAddress;
+
+    std::string sUserAgent = "wsjcpp-geoip";
+    CURL *curl;
+    CURLcode res;
+    curl = curl_easy_init(); 
+    std::string sResponse = "";
+    if (curl) { 
+        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); //only for https
+        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); //only for https
+        curl_easy_setopt(curl, CURLOPT_URL, sUrl.c_str()); 
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WSJCppGeoIP_CallbackFunc_DataToString); 
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &sResponse);
+        
+        curl_easy_setopt(curl, CURLOPT_USERAGENT, sUserAgent.c_str());
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+        curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 50L);
+        // curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+        res = curl_easy_perform(curl); 
+        if (res != CURLE_OK) {
+            std::string sError = "Curl failed, reason  " + std::string(curl_easy_strerror(res)); 
+            WSJCppLog::err(TAG, sError); 
+            // TODO remove file
+            curl_easy_cleanup(curl);
+            WSJCppGeoIPResult(sServiceName, sIpAddress, sError);
+        } else {
+            long response_code;
+            curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
+            if (response_code != 200) {
+                WSJCppLog::info(TAG, "end " + std::to_string(response_code));
+                // TODO remove file
+                curl_easy_cleanup(curl);
+            }
+        }
+        // always cleanup
+        curl_easy_cleanup(curl);
+    }
+    return WSJCppGeoIP::parseResponseIpApiCom(sIpAddress, sResponse);
 }
 
 // ----------------------------------------------------------------------
