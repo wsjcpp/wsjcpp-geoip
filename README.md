@@ -9,6 +9,8 @@ include files:
 
     src.wsjcpp/wsjcpp_core/wsjcpp_core.h
     src.wsjcpp/wsjcpp_core/wsjcpp_core.cpp
+    src.wsjcpp/wsjcpp_core/wsjcpp_validators.h
+    src.wsjcpp/wsjcpp_core/wsjcpp_validators.cpp
     src/wsjcpp_geoip.cpp
     src/wsjcpp_geoip.h
 

@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 project(unit-tests C CXX)
-add_definitions(-DWSJCPP_VERSION="ut-v0.0.1")
+add_definitions(-DWSJCPP_VERSION="ut-v0.0.2")
 add_definitions(-DWSJCPP_NAME="unit-tests-wsjcpp-geoip")
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -36,7 +36,7 @@ list (APPEND WSJCPP_INCLUDE_DIRS "../src.wsjcpp/wsjcpp_validators/")
 list (APPEND WSJCPP_SOURCES "../src.wsjcpp/wsjcpp_validators/wsjcpp_validators.h")
 list (APPEND WSJCPP_SOURCES "../src.wsjcpp/wsjcpp_validators/wsjcpp_validators.cpp")
 
-# wsjcpp-geoip:v0.0.1
+# wsjcpp-geoip:v0.0.2
 list (APPEND WSJCPP_INCLUDE_DIRS "../src")
 list (APPEND WSJCPP_SOURCES "../src/wsjcpp_geoip.cpp")
 list (APPEND WSJCPP_SOURCES "../src/wsjcpp_geoip.h")
