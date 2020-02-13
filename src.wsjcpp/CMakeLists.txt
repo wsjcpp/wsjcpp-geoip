@@ -14,7 +14,10 @@ set (WSJCPP_LIBRARIES "")
 set (WSJCPP_INCLUDE_DIRS "")
 set (WSJCPP_SOURCES "")
 
-# wsjcpp-core:v0.0.4
+find_package(Threads REQUIRED)
+list (APPEND WSJCPP_LIBRARIES ${CMAKE_THREAD_LIBS_INIT})
+
+# wsjcpp-core:v0.0.5
 list (APPEND WSJCPP_INCLUDE_DIRS "./src.wsjcpp/wsjcpp_core/")
 list (APPEND WSJCPP_SOURCES "./src.wsjcpp/wsjcpp_core/wsjcpp_core.cpp")
 list (APPEND WSJCPP_SOURCES "./src.wsjcpp/wsjcpp_core/wsjcpp_core.h")
@@ -22,6 +25,11 @@ list (APPEND WSJCPP_SOURCES "./src.wsjcpp/wsjcpp_core/wsjcpp_core.h")
 # nlohmann/json:v3.7.3
 list (APPEND WSJCPP_INCLUDE_DIRS "./src.wsjcpp/nlohmann_json/")
 list (APPEND WSJCPP_SOURCES "./src.wsjcpp/nlohmann_json/json.hpp")
+
+# wsjcpp-validators:v0.0.3
+list (APPEND WSJCPP_INCLUDE_DIRS "./src.wsjcpp/wsjcpp_validators/")
+list (APPEND WSJCPP_SOURCES "./src.wsjcpp/wsjcpp_validators/wsjcpp_validators.h")
+list (APPEND WSJCPP_SOURCES "./src.wsjcpp/wsjcpp_validators/wsjcpp_validators.cpp")
 
 # required-libraries
 list (APPEND WSJCPP_LIBRARIES "-lpthread")

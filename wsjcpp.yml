@@ -7,9 +7,7 @@ description: C++. Call request to another services for get location coordinates 
 issues: https://github.com/wsjcpp/wsjcpp-geoip/issues
 keywords:
   - "c++"
-  - "sources"
-  - "storages"
-  - "database"
+  - "geoip"
 
 required-libraries:
   - pthread
@@ -19,7 +17,7 @@ required-pkg-config:
 
 dependencies:
   - name: "wsjcpp-core"
-    version: "v0.0.4"
+    version: "v0.0.5"
     url: "https://github.com/wsjcpp/wsjcpp-core:master"
     origin: "https://github.com/"
     installation-dir: "./src.wsjcpp/wsjcpp_core"
@@ -28,6 +26,11 @@ dependencies:
     url: "https://github.com/wsjcpp/json:develop"
     origin: "https://github.com/"
     installation-dir: "./src.wsjcpp/nlohmann_json"
+  - name: "wsjcpp-validators"
+    version: "v0.0.3"
+    url: "https://github.com/wsjcpp/wsjcpp-validators:master"
+    origin: "https://github.com/"
+    installation-dir: "./src.wsjcpp/wsjcpp_validators"
 
 repositories:
   - type: main
@@ -46,3 +49,15 @@ distribution:
     target-file: "wsjcpp_geoip.h"
     type: "source-code"
     sha1: "b067fb17b5370fb12aea405a844234bf45735cac"
+
+unit-tests:
+  cases:
+    - name: ParserIpApiCom
+      description: "Test parser"
+    - name: "CompareIpV4"
+      description: "Test comparator"
+      enabled: "yes"
+    - name: "GeoIpV4Class"
+      description: "Test for class ipv4"
+    - name: "IpV4InReservedRange"
+      description: "Test reserved ranges"

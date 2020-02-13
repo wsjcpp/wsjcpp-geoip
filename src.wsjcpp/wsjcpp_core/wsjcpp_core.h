@@ -45,11 +45,14 @@ class WSJCppCore {
         static std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
         static std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
         static std::string& to_lower(std::string& str);
+        static std::string toUpper(const std::string& str);
 
         static void initRandom();
         static std::string createUuid();
-        static bool isIPv4(const std::string& str);
-        static bool isIPv6(const std::string& str);
+
+        static unsigned long convertVoidToULong(void *p);
+        static std::string getPointerAsHex(void *p);
+        static std::string extractURLProtocol(const std::string& sValue);
 };
 
 
@@ -96,6 +99,7 @@ class WSJCppLog {
         static void throw_err(const std::string &sTag, const std::string &sMessage);
         static void warn(const std::string &sTag, const std::string &sMessage);
         static void ok(const std::string &sTag, const std::string &sMessage);
+        static std::vector<std::string> getLastLogMessages();
         static void setLogDirectory(const std::string &sDirectoryPath);
         static void setPrefixLogFile(const std::string &sPrefixLogFile);
         static void initGlobalVariables();

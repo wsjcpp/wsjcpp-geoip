@@ -1,9 +1,9 @@
 #ifndef UNIT_TEST_PARSER_IP_API_COM_H
 #define UNIT_TEST_PARSER_IP_API_COM_H
 
-#include <unit_tests.h>
+#include <wsjcpp_unit_tests.h>
 
-class UnitTestParserIpApiCom : public UnitTestBase {
+class UnitTestParserIpApiCom : public WSJCppUnitTestBase {
     public:
         UnitTestParserIpApiCom();
         virtual void init();
