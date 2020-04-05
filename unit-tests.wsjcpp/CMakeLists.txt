@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 project(unit-tests C CXX)
-add_definitions(-DWSJCPP_VERSION="ut-v0.0.2")
+add_definitions(-DWSJCPP_VERSION="ut-v0.1.0")
 add_definitions(-DWSJCPP_NAME="unit-tests-wsjcpp-geoip")
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -19,7 +19,7 @@ set (WSJCPP_SOURCES "")
 find_package(Threads REQUIRED)
 list (APPEND WSJCPP_LIBRARIES ${CMAKE_THREAD_LIBS_INIT})
 
-# wsjcpp-core:v0.0.5
+# wsjcpp-core:v0.1.1
 list (APPEND WSJCPP_INCLUDE_DIRS "../src.wsjcpp/wsjcpp_core/")
 list (APPEND WSJCPP_SOURCES "../src.wsjcpp/wsjcpp_core/wsjcpp_core.cpp")
 list (APPEND WSJCPP_SOURCES "../src.wsjcpp/wsjcpp_core/wsjcpp_core.h")
@@ -31,12 +31,12 @@ list (APPEND WSJCPP_SOURCES "../src.wsjcpp/wsjcpp_core/wsjcpp_unit_tests_main.cp
 list (APPEND WSJCPP_INCLUDE_DIRS "../src.wsjcpp/nlohmann_json/")
 list (APPEND WSJCPP_SOURCES "../src.wsjcpp/nlohmann_json/json.hpp")
 
-# wsjcpp-validators:v0.0.3
+# wsjcpp-validators:v0.1.0
 list (APPEND WSJCPP_INCLUDE_DIRS "../src.wsjcpp/wsjcpp_validators/")
 list (APPEND WSJCPP_SOURCES "../src.wsjcpp/wsjcpp_validators/wsjcpp_validators.h")
 list (APPEND WSJCPP_SOURCES "../src.wsjcpp/wsjcpp_validators/wsjcpp_validators.cpp")
 
-# wsjcpp-geoip:v0.0.2
+# wsjcpp-geoip:v0.1.0
 list (APPEND WSJCPP_INCLUDE_DIRS "../src")
 list (APPEND WSJCPP_SOURCES "../src/wsjcpp_geoip.cpp")
 list (APPEND WSJCPP_SOURCES "../src/wsjcpp_geoip.h")
@@ -51,9 +51,6 @@ list (APPEND WSJCPP_SOURCES "../unit-tests.wsjcpp/src/unit_test_geo_ip_v4_class.
 list (APPEND WSJCPP_SOURCES "../unit-tests.wsjcpp/src/unit_test_geo_ip_v4_class.cpp")
 list (APPEND WSJCPP_SOURCES "../unit-tests.wsjcpp/src/unit_test_ip_v4_in_reserved_range.h")
 list (APPEND WSJCPP_SOURCES "../unit-tests.wsjcpp/src/unit_test_ip_v4_in_reserved_range.cpp")
-
-# required-libraries
-list (APPEND WSJCPP_LIBRARIES "-lpthread")
 
 # required-pkg-config
 ############################

@@ -3,10 +3,10 @@
 #include <wsjcpp_core.h>
 #include <wsjcpp_geoip.h>
 
-REGISTRY_UNIT_TEST(UnitTestIpV4InReservedRange)
+REGISTRY_WSJCPP_UNIT_TEST(UnitTestIpV4InReservedRange)
 
 UnitTestIpV4InReservedRange::UnitTestIpV4InReservedRange()
-    : WSJCppUnitTestBase("UnitTestIpV4InReservedRange") {
+    : WsjcppUnitTestBase("UnitTestIpV4InReservedRange") {
 }
 
 // ---------------------------------------------------------------------
@@ -93,12 +93,12 @@ bool UnitTestIpV4InReservedRange::run() {
 
     for (int i = 0; i < tests.size(); i++) {
         std::string sIPv4 = tests[i].sIp;
-        WSJCppGeoIPv4 ipV4; 
+        WsjcppGeoIPv4 ipV4; 
         bool bCorrectAddress = ipV4.fromString(sIPv4);
         compareB(bTestSuccess, "Invalid IPv4 Address: " + sIPv4, bCorrectAddress, true);
         if (bCorrectAddress) {
             std::string sError = "";
-            bool bRes = WSJCppGeoIP::isIPv4InReservedRange(ipV4, sError);
+            bool bRes = WsjcppGeoIP::isIPv4InReservedRange(ipV4, sError);
             compareB(bTestSuccess, sIPv4, bRes, tests[i].bExpected);
         }
     }

@@ -4,7 +4,7 @@
 #include <wsjcpp_unit_tests.h>
 
 // Description: TODO
-class UnitTestIpV4InReservedRange : public WSJCppUnitTestBase {
+class UnitTestIpV4InReservedRange : public WsjcppUnitTestBase {
     public:
         UnitTestIpV4InReservedRange();
         virtual void init();

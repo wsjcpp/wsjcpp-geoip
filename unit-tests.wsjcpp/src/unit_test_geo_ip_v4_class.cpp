@@ -3,10 +3,10 @@
 #include <wsjcpp_core.h>
 #include <wsjcpp_geoip.h>
 
-REGISTRY_UNIT_TEST(UnitTestGeoIpV4Class)
+REGISTRY_WSJCPP_UNIT_TEST(UnitTestGeoIpV4Class)
 
 UnitTestGeoIpV4Class::UnitTestGeoIpV4Class()
-    : WSJCppUnitTestBase("UnitTestGeoIpV4Class") {
+    : WsjcppUnitTestBase("UnitTestGeoIpV4Class") {
 }
 
 // ---------------------------------------------------------------------
@@ -37,7 +37,7 @@ bool UnitTestGeoIpV4Class::run() {
     tests.push_back(LTTest("0.0.0.0", true));
     tests.push_back(LTTest("255.255.255.255", true));
 
-    WSJCppGeoIPv4 someIp;
+    WsjcppGeoIPv4 someIp;
     for (int i = 0; i < tests.size(); i++) {
         std::string sIp = tests[i].sIp;
         bool bRes = someIp.fromString(sIp);

@@ -1,10 +1,10 @@
 #include "unit_test_parser_ip_api_com.h"
 #include <wsjcpp_geoip.h>
 
-REGISTRY_UNIT_TEST(UnitTestParserIpApiCom)
+REGISTRY_WSJCPP_UNIT_TEST(UnitTestParserIpApiCom)
 
 UnitTestParserIpApiCom::UnitTestParserIpApiCom() 
-    : WSJCppUnitTestBase("UnitTestParserIpApiCom") {
+    : WsjcppUnitTestBase("UnitTestParserIpApiCom") {
     // 
 }
 
@@ -23,14 +23,14 @@ bool UnitTestParserIpApiCom::run() {
     
     bool bTestSuccess = true;
     {
-        WSJCppGeoIPResult result = WSJCppGeoIP::parseResponseIpApiCom("127.0.0.1", msg1);
+        WsjcppGeoIPResult result = WsjcppGeoIP::parseResponseIpApiCom("127.0.0.1", msg1);
         compareB(bTestSuccess, "msg1_status_fail", result.hasError(), true);
         compareS(bTestSuccess, "msg1_service_name", result.getServiceName(), "ip-api.com");
         compareS(bTestSuccess, "msg1_ip_address", result.getIpAddress(), "127.0.0.1");
     }
     
 
-    WSJCppGeoIPResult result2 = WSJCppGeoIP::parseResponseIpApiCom("79.120.78.1", msg2);
+    WsjcppGeoIPResult result2 = WsjcppGeoIP::parseResponseIpApiCom("79.120.78.1", msg2);
     compareB(bTestSuccess, "msg2_status_success", result2.hasError(), false);
     compareS(bTestSuccess, "msg3_service_name", result2.getServiceName(), "ip-api.com");
     compareS(bTestSuccess, "msg3_ip_address", result2.getIpAddress(), "79.120.78.1");
@@ -40,7 +40,7 @@ bool UnitTestParserIpApiCom::run() {
     compareD(bTestSuccess, "msg2_lat", result2.getLatitude(), 55.7737);
     compareD(bTestSuccess, "msg2_lon", result2.getLongitude(), 37.6055);
 
-    WSJCppGeoIPResult result3 = WSJCppGeoIP::parseResponseIpApiCom("213.234.222.81", msg3);
+    WsjcppGeoIPResult result3 = WsjcppGeoIP::parseResponseIpApiCom("213.234.222.81", msg3);
     compareB(bTestSuccess, "msg3_status_success", result3.hasError(), false);
     compareS(bTestSuccess, "msg3_service_name", result3.getServiceName(), "ip-api.com");
     compareS(bTestSuccess, "msg3_ip_address", result3.getIpAddress(), "213.234.222.81");

@@ -3,10 +3,10 @@
 #include <wsjcpp_core.h>
 #include <wsjcpp_geoip.h>
 
-REGISTRY_UNIT_TEST(UnitTestCompareIpV4)
+REGISTRY_WSJCPP_UNIT_TEST(UnitTestCompareIpV4)
 
 UnitTestCompareIpV4::UnitTestCompareIpV4()
-    : WSJCppUnitTestBase("UnitTestCompareIpV4") {
+    : WsjcppUnitTestBase("UnitTestCompareIpV4") {
 }
 
 // ---------------------------------------------------------------------
@@ -22,8 +22,8 @@ bool UnitTestCompareIpV4::run() {
     
     struct LTTest {
         LTTest(
-            const WSJCppGeoIPv4 &left, 
-            const WSJCppGeoIPv4 &right, 
+            const WsjcppGeoIPv4 &left, 
+            const WsjcppGeoIPv4 &right, 
             bool bEquals, 
             bool bMoreThen, 
             bool bLessThen, 
@@ -38,8 +38,8 @@ bool UnitTestCompareIpV4::run() {
             this->bMoreOrEquals = bMoreOrEquals;
             this->bLessOrEquals = bLessOrEquals;
         }
-        WSJCppGeoIPv4 left;
-        WSJCppGeoIPv4 right;
+        WsjcppGeoIPv4 left;
+        WsjcppGeoIPv4 right;
         bool bEquals;
         bool bMoreThen; 
         bool bLessThen;
@@ -48,21 +48,21 @@ bool UnitTestCompareIpV4::run() {
     };
 
     std::vector<LTTest> vTests;
-    vTests.push_back(LTTest(WSJCppGeoIPv4(10, 10, 10, 10), WSJCppGeoIPv4(10, 10, 10, 10), true, false, false, true, true));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(11, 10, 10, 10), WSJCppGeoIPv4(10, 10, 10, 10), false, true, false, true, false));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(10, 255, 10, 10), WSJCppGeoIPv4(10, 10, 10, 10), false, true, false, true, false));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(10, 10, 12, 10), WSJCppGeoIPv4(10, 10, 10, 10), false, true, false, true, false));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(10, 10, 10, 11), WSJCppGeoIPv4(10, 10, 10, 10), false, true, false, true, false));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(1, 10, 10, 10), WSJCppGeoIPv4(10, 10, 10, 10), false, false, true, false, true));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(10, 0, 10, 10), WSJCppGeoIPv4(10, 10, 10, 10), false, false, true, false, true));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(10, 10, 10, 10), WSJCppGeoIPv4(10, 10, 255, 10), false, false, true, false, true));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(10, 10, 10, 1), WSJCppGeoIPv4(10, 10, 10, 10), false, false, true, false, true));
-    vTests.push_back(LTTest(WSJCppGeoIPv4(0, 0, 0, 0), WSJCppGeoIPv4(255, 255, 255, 255), false, false, true, false, true));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(10, 10, 10, 10), WsjcppGeoIPv4(10, 10, 10, 10), true, false, false, true, true));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(11, 10, 10, 10), WsjcppGeoIPv4(10, 10, 10, 10), false, true, false, true, false));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(10, 255, 10, 10), WsjcppGeoIPv4(10, 10, 10, 10), false, true, false, true, false));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(10, 10, 12, 10), WsjcppGeoIPv4(10, 10, 10, 10), false, true, false, true, false));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(10, 10, 10, 11), WsjcppGeoIPv4(10, 10, 10, 10), false, true, false, true, false));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(1, 10, 10, 10), WsjcppGeoIPv4(10, 10, 10, 10), false, false, true, false, true));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(10, 0, 10, 10), WsjcppGeoIPv4(10, 10, 10, 10), false, false, true, false, true));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(10, 10, 10, 10), WsjcppGeoIPv4(10, 10, 255, 10), false, false, true, false, true));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(10, 10, 10, 1), WsjcppGeoIPv4(10, 10, 10, 10), false, false, true, false, true));
+    vTests.push_back(LTTest(WsjcppGeoIPv4(0, 0, 0, 0), WsjcppGeoIPv4(255, 255, 255, 255), false, false, true, false, true));
 
     for (int i = 0; i < vTests.size(); i++) {
         LTTest test = vTests[i];
-        WSJCppGeoIPv4 left = test.left;
-        WSJCppGeoIPv4 right = test.right;
+        WsjcppGeoIPv4 left = test.left;
+        WsjcppGeoIPv4 right = test.right;
         compareB(bTestSuccess, left.toString() + " == " + right.toString(), left == right, test.bEquals);
         compareB(bTestSuccess, left.toString() + " < " + right.toString(), left < right, test.bLessThen);
         compareB(bTestSuccess, left.toString() + " > " + right.toString(), left > right, test.bMoreThen);
