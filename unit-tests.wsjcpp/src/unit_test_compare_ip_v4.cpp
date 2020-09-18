@@ -11,14 +11,14 @@ UnitTestCompareIpV4::UnitTestCompareIpV4()
 
 // ---------------------------------------------------------------------
 
-void UnitTestCompareIpV4::init() {
+bool UnitTestCompareIpV4::doBeforeTest() {
     // nothing
+    return true;
 }
 
 // ---------------------------------------------------------------------
 
-bool UnitTestCompareIpV4::run() {
-    bool bTestSuccess = true;
+void UnitTestCompareIpV4::executeTest() {
     
     struct LTTest {
         LTTest(
@@ -63,12 +63,18 @@ bool UnitTestCompareIpV4::run() {
         LTTest test = vTests[i];
         WsjcppGeoIPv4 left = test.left;
         WsjcppGeoIPv4 right = test.right;
-        compareB(bTestSuccess, left.toString() + " == " + right.toString(), left == right, test.bEquals);
-        compareB(bTestSuccess, left.toString() + " < " + right.toString(), left < right, test.bLessThen);
-        compareB(bTestSuccess, left.toString() + " > " + right.toString(), left > right, test.bMoreThen);
-        compareB(bTestSuccess, left.toString() + " <= " + right.toString(), left <= right, test.bLessOrEquals);
-        compareB(bTestSuccess, left.toString() + " >= " + right.toString(), left >= right, test.bMoreOrEquals);
+        compare(left.toString() + " == " + right.toString(), left == right, test.bEquals);
+        compare(left.toString() + " < " + right.toString(), left < right, test.bLessThen);
+        compare(left.toString() + " > " + right.toString(), left > right, test.bMoreThen);
+        compare(left.toString() + " <= " + right.toString(), left <= right, test.bLessOrEquals);
+        compare(left.toString() + " >= " + right.toString(), left >= right, test.bMoreOrEquals);
     }
-    return bTestSuccess;
+}
+
+// ---------------------------------------------------------------------
+
+bool UnitTestCompareIpV4::doAfterTest() {
+    // nothing
+    return true;
 }
 

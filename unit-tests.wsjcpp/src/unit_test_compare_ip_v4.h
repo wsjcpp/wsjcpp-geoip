@@ -3,12 +3,12 @@
 
 #include <wsjcpp_unit_tests.h>
 
-// Description: TODO
 class UnitTestCompareIpV4 : public WsjcppUnitTestBase {
     public:
         UnitTestCompareIpV4();
-        virtual void init();
-        virtual bool run();
+        virtual bool doBeforeTest() override;
+        virtual void executeTest() override;
+        virtual bool doAfterTest() override;
 };
 
 #endif // UNIT_TEST_COMPARE_IP_V4_H

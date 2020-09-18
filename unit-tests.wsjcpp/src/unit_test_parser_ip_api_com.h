@@ -6,8 +6,9 @@
 class UnitTestParserIpApiCom : public WsjcppUnitTestBase {
     public:
         UnitTestParserIpApiCom();
-        virtual void init();
-        virtual bool run();
+        virtual bool doBeforeTest() override;
+        virtual void executeTest() override;
+        virtual bool doAfterTest() override;
 
     private:
         

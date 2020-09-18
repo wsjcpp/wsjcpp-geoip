@@ -11,13 +11,14 @@ UnitTestGeoIpV4Class::UnitTestGeoIpV4Class()
 
 // ---------------------------------------------------------------------
 
-void UnitTestGeoIpV4Class::init() {
+bool UnitTestGeoIpV4Class::doBeforeTest() {
     // nothing
+    return true;
 }
 
 // ---------------------------------------------------------------------
 
-bool UnitTestGeoIpV4Class::run() {
+void UnitTestGeoIpV4Class::executeTest() {
     bool bTestSuccess = true;
 
     struct LTTest {
@@ -41,11 +42,17 @@ bool UnitTestGeoIpV4Class::run() {
     for (int i = 0; i < tests.size(); i++) {
         std::string sIp = tests[i].sIp;
         bool bRes = someIp.fromString(sIp);
-        compareB(bTestSuccess, sIp, bRes, tests[i].bExpected);
+        compare(sIp, bRes, tests[i].bExpected);
         if (bRes) {
-            compareS(bTestSuccess, sIp, someIp.toString(), sIp);
+            compare(sIp, someIp.toString(), sIp);
         }
     }
-    return bTestSuccess;
+}
+
+// ---------------------------------------------------------------------
+
+bool UnitTestGeoIpV4Class::doAfterTest() {
+    // nothing
+    return true;
 }
 

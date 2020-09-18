@@ -11,13 +11,14 @@ UnitTestIpV4InReservedRange::UnitTestIpV4InReservedRange()
 
 // ---------------------------------------------------------------------
 
-void UnitTestIpV4InReservedRange::init() {
+bool UnitTestIpV4InReservedRange::doBeforeTest() {
     // nothing
+    return true;
 }
 
 // ---------------------------------------------------------------------
 
-bool UnitTestIpV4InReservedRange::run() {
+void UnitTestIpV4InReservedRange::executeTest() {
     bool bTestSuccess = true;
     
     struct LTTest {
@@ -95,13 +96,18 @@ bool UnitTestIpV4InReservedRange::run() {
         std::string sIPv4 = tests[i].sIp;
         WsjcppGeoIPv4 ipV4; 
         bool bCorrectAddress = ipV4.fromString(sIPv4);
-        compareB(bTestSuccess, "Invalid IPv4 Address: " + sIPv4, bCorrectAddress, true);
+        compare("Invalid IPv4 Address: " + sIPv4, bCorrectAddress, true);
         if (bCorrectAddress) {
             std::string sError = "";
             bool bRes = WsjcppGeoIP::isIPv4InReservedRange(ipV4, sError);
-            compareB(bTestSuccess, sIPv4, bRes, tests[i].bExpected);
+            compare(sIPv4, bRes, tests[i].bExpected);
         }
     }
-    return bTestSuccess;
 }
 
+// ---------------------------------------------------------------------
+
+bool UnitTestIpV4InReservedRange::doAfterTest() {
+    // nothing
+    return true;
+}
